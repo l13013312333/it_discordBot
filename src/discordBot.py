@@ -1,6 +1,7 @@
 # 導入 套件
 import discord
 import os
+import re
 from dotenv import load_dotenv
 
 # 取得環境設定
@@ -27,8 +28,17 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  print(message) # 印出message 內容
   if message.author == client.user: # 排除機器人本身的訊息
     return
+
+  # 純文字偵測「ping」
   if message.content == 'ping':
-    await message.channel.send('pong')
+    await message.channel.send('pong')  # 發送訊息到目標伺服器的文字頻道
+  # 偵測機器人被Tag
+  elif re.findall(f"<@{client.application_id}>", message.content):
+    await message.reply("安安 找我嗎~") # 使用「回覆」目標訊息
+	# 文字判斷
+  elif re.findall("呼叫幫手", message.content):
+    newStr = message.content.split('呼叫幫手')
+    msg = "私訊你囉~ 你剛剛說: "+ newStr[1] if len(newStr) > 1 and newStr[1] else "私訊你囉~ "
+    await message.author.send(msg) # 發送訊息到目標成員私訊

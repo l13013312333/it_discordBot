@@ -7,6 +7,13 @@ def _init(client):
 	@client.event
 	async def on_ready():
 		print(f"「{client.user}」已登入")
+	
+	@client.event
+	async def on_connect():
+		if client.auto_sync_commands:
+			await client.sync_commands()
+			print(f"{client.user.name} connected.")
+		
 		
 	@client.event
 	async def on_message(message):
@@ -23,6 +30,7 @@ def _init(client):
 			newStr = message.content.split('呼叫幫手')
 			msg = "私訊你囉~ 你剛剛說: " + newStr[1] if len(newStr) > 1 and newStr[1] else "私訊你囉~ "
 			await message.author.send(msg)  # 發送訊息到目標成員私訊
+		await client.process_commands(message)
 
 	@client.event
 	async def on_message_edit(before, after):

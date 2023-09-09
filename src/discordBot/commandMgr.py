@@ -2,7 +2,6 @@ import os
 import importlib
 
 def _init(Bot):
-	print(Bot)
 	path = os.path.join(os.getcwd() + "/src/discordBot/commands")
 	dirs = os.listdir(path)
 

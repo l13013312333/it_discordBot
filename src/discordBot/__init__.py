@@ -13,7 +13,7 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 intents = discord.Intents.default()
 intents.message_content = True
 # client
-client = commands.Bot(intents=intents)
+client = commands.Bot(command_prefix='$', intents=intents, strip_after_prefix=True)
 
 class DiscordBot():
   def __init__(self) -> None:

@@ -15,9 +15,8 @@ def main(Bot):
         @discord.ui.select(placeholder = "選擇", min_values=1, max_values=1, options=[
             discord.SelectOption(label="A", description="讓他告訴你未來一年間發生的事"),
             discord.SelectOption(label="B", description="讓他告訴你明天發生的事"),
-            discord.SelectOption(label="C", description="讓他什麼都不要說"),
-        ]
-        )
+            discord.SelectOption(label="C", description="讓他什麼都不要說")
+        ])
         async def select_callback(self, select:discord.ui.Select, interaction:discord.Interaction):
             select.disabled = True
             msg = None
@@ -26,8 +25,6 @@ def main(Bot):
             else : msg = "你總是非常的小心謹慎，個性有點內向，不太懂得如何表達自己的情感面，很多時候你更喜歡自己待著，會讓你感到相較自在。"
             await interaction.response.edit_message(content=msg ,view=None)
 
-
-    
     @Bot.command(name="選單")
     async def click_click(ctx):
         await ctx.send('路上有個老人擁有預知能力，並可以告知你一些事情，你希望...', view=SelectView(ctx.author))

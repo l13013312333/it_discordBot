@@ -20,8 +20,8 @@ def main(Bot):
         async def select_callback(self, select:discord.ui.Select, interaction:discord.Interaction):
             select.disabled = True
             msg = None
-            if select.values[0] is "A": msg = "你的外表看起來隨和、好相處，但內裡其實有點固執，意志非常的堅強，面對自己在乎的事情會非常執著。"
-            elif select.values[0] is "B": msg = "你的個性有點急躁，想到什麼就做什麼，但也非常的單純，從來不記仇，社交能力很強，是大家的開心果。"
+            if select.values[0] == "A": msg = "你的外表看起來隨和、好相處，但內裡其實有點固執，意志非常的堅強，面對自己在乎的事情會非常執著。"
+            elif select.values[0] == "B": msg = "你的個性有點急躁，想到什麼就做什麼，但也非常的單純，從來不記仇，社交能力很強，是大家的開心果。"
             else : msg = "你總是非常的小心謹慎，個性有點內向，不太懂得如何表達自己的情感面，很多時候你更喜歡自己待著，會讓你感到相較自在。"
             await interaction.response.edit_message(content=msg ,view=None)
 

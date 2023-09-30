@@ -1,8 +1,10 @@
 # 導入 套件
 import os
+
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
+
 import src.discordBot.eventMgr as EventMgr
 import src.discordBot.commandMgr as CommandMgr
 

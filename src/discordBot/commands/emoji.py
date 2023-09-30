@@ -18,7 +18,7 @@ def main(Bot):
     
         async def callback(self, interaction: discord.Interaction):
             
-            def check(reaction, user):
+            def check(ctx, user):
                 return user == ctx.message.author 
               
             embed = discord.Embed(title=f"{self.children[0].value}", description=f"{self.children[1].value}")
